@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 1024px) {
+  .scroll_width {
+    overflow-y: scroll;
+    overflow-x: unset;
+    scrollbar-width: thin;
+  }
+
+  .scroll_width::-webkit-scrollbar {
+    overflow-y: scroll;
+    overflow-x: unset;
+    width: 5px;
+    background-color: #1a3e58;
+  }
+}
+
+.animate-bottomToTop {
+  animation: bottomToTop 1s ease forwards;
+}
+
+.animate-bottomToTop.delay-1 {
+  animation-delay: 0.5s;
+}
+
+.animate-bottomToTop {
+  animation: bottomToTop 1s ease forwards;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background-color: #dec08c;
+  transition: 500ms ease;
+  z-index: -1;
+}
+
+.btn .text-2 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: hsla(40, 12%, 5%, 1);
+}
+
+.btn:is(:hover, :focus-visible)::before { bottom: -50%; }
+
+.btn:is(:hover, :focus-visible) .text-1 { transform: translateY(-40px); }
+
+.btn:is(:hover, :focus-visible) .text-2 {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Base rotation animation */
+
+@keyframes spin-circle {
+  0% {
+    transform: rotate(0deg) translateX(120px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(120px) rotate(-360deg);
+  }
+}
+
+/* Animations for individual circles */
+.animate-spin-circle-0 {
+  animation: spin-circle 10s linear infinite;
+}
+
+.animate-spin-circle-1 {
+  animation: spin-circle 10s linear infinite;
+  animation-delay: 2s;
+}
+
+.animate-spin-circle-2 {
+  animation: spin-circle 10s linear infinite;
+  animation-delay: 4s;
+}
+
+.animate-spin-circle-3 {
+  animation: spin-circle 10s linear infinite;
+  animation-delay: 6s;
+}
+
+.animate-spin-circle-4 {
+  animation: spin-circle 10s linear infinite;
+  animation-delay: 8s;
+}
+
+.background-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(4, 7, 29, 1) 0%,
+    rgba(12, 14, 35, 1) 100%
+  );
+}
+
+.card-animation {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@layer utilities {
+  .box {
+    position: relative;
+    border: 7px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(#165248, #165248) padding-box,
+      linear-gradient(var(--angle, 0deg), #070707, #687aff) border-box;
+    animation: rotate-border 8s linear infinite;
+  }
+
+  .box2 {
+    position: relative;
+    border: 7px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(#94bb3c, #94bb3c) padding-box,
+      linear-gradient(var(--angle, 0deg), #070707, #687aff) border-box;
+    animation: rotate-border 8s linear infinite;
+  }
+
+  @keyframes rotate-border {
+    0% {
+      --angle: 0deg;
+    }
+    100% {
+      --angle: 360deg;
+    }
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+}
+
+.footer-backgound {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url("../public/footer.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slide > div {
+  margin-left: 1rem; /* mx-5 = 1.25rem */
+  margin-right: 1rem;
+}
+
+.clip-curve {
+  clip-path: ellipse(100% 100% at 50% 85%);
+}
+
+.dark{  
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
