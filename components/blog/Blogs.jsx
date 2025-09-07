@@ -1,17 +1,13 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { BlogObject } from '../../types/types';
 
-interface BlogsProps {
-  all_blogs: BlogObject[];
-}
 
-export const Blogs: React.FC<BlogsProps> = ({ all_blogs }) => {
+export const Blogs = ({ posts }) => {
   const router = useRouter();
 
-  const handleSeeBlog = (blogid: String) => {
-    router.push(`/blog/${blogid}`);
+  const handleSeeBlog = (slug) => {
+    router.push(`/blog/${slug}`);
   };
 
   const motionConfig = {
@@ -24,7 +20,7 @@ export const Blogs: React.FC<BlogsProps> = ({ all_blogs }) => {
   return (
     <div className="flex flex-col justify-center items-center lg:pl-10">
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 pb-10">
-        {all_blogs?.map((blog: any, index: any) => {
+        {posts?.map((blog, index) => {
           return (
             <motion.div
               key={index}
@@ -33,7 +29,7 @@ export const Blogs: React.FC<BlogsProps> = ({ all_blogs }) => {
             >
               <div className="w-full h-72 md:h-[300px] relative mb-5">
                 <Image
-                  src={blog.image}
+                  src={blog.featured_media}
                   alt={blog.title}
                   layout="fill"
                   objectFit="cover"
@@ -48,18 +44,23 @@ export const Blogs: React.FC<BlogsProps> = ({ all_blogs }) => {
                     {blog.category}
                   </h3>
 
-                  <h3 className="font-semibold text-md md:text-lg mb-5">
-                    {blog.date}
+                  <h3 className="font-semibold text-md md:text-lg mb-5 lg:mb-0">
+                    {new Date(blog.date).toLocaleDateString('en-US', {
+                      weekday: 'short',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
                   </h3>
                 </div>
-                <h1 className="font-bold text-xl md:text-2xl mb-5 group-hover:text-white">
-                  {blog.title}
-                </h1>
+                
+                <h1 className="font-bold text-xl md:text-2xl mb-5 group-hover:text-white" dangerouslySetInnerHTML={{ __html: blog.title }} />
+                
                 <p className="font-normal text-md md:text-xl text-justify mb-5">
                   {blog.shortDescription}
                 </p>
 
-                <button onClick={() => handleSeeBlog(blog.id)}>
+                <button onClick={() => handleSeeBlog(blog.slug)}>
                   <h5
                     className={`font-bold font-monospace group-hover:border-black text-xl bg-primaryColor rounded-lg mb-5
                     group-hover:bg-secondaryColor mt-1 w-40 items-center justify-center hover:scale-105 transition duration-400 p-2 text-white`}

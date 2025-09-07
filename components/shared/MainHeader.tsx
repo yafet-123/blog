@@ -5,7 +5,6 @@ import { HeaderTitle } from '../../types/types';
 export const MainHeader: React.FC<HeaderTitle> = ({ title }) => {
   return (
     <div>
-      <div>
       <Head>
         <title>{title}</title>
         <meta
@@ -51,7 +50,5 @@ export const MainHeader: React.FC<HeaderTitle> = ({ title }) => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
     </div>
-iv>
-
   );
 };
