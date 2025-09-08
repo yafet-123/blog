@@ -9,7 +9,7 @@ export default function BlogDetail({ blog, all_blogs, topRatedPosts,}) {
   return (
     <div className="antialiased bg-gradient-to-r">
       <MainHeader
-        title={`Eco Travel Ethiopia Tours and Car Rental`}
+        title={`Blog Individual Page`}
       />
       <div className="flex flex-col-reverse lg:flex-row w-full h-full px-5 lg:px-20 pt-24">
         <div className="lg:w-[30%] lg:pr-5">

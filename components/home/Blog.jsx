@@ -12,32 +12,6 @@ export default function Blog({posts}) {
   const handleBlog = () => {
     router.push(`/blog`);
   };
-  const whatmakes = [
-    {
-      id: "exploring-the-rock-hewn-churches-of-lalibela",
-      tour: "Exploring the Rock Hewn Churches of Lalibela",
-      image: "/blog/blog (1).jpg",
-      description:
-        `Lalibela is often called the “New Jerusalem” of Ethiopia. Famous for its remarkable rock-hewn churches carved entirely 
-        out of stone.`,
-    },
-    {
-      id: "the-timeless-beauty-of-the-simien-mountains",
-      tour: "The Timeless Beauty of the Simien Mountains",
-      image: "/blog/blog (2).jpg",
-      description:
-        `The Simien Mountains, often referred to as the “Roof of Africa,” are a hiker’s paradise. With dramatic cliffs, jagged 
-        peaks, and vast plateaus.`,
-    },
-    {
-      id: "discovering-the-ancient-city-of-axum",
-      tour: "Discovering the Ancient City of Axum",
-      image: "/blog/blog (3).jpg",
-      description:
-        `Axum is the cradle of Ethiopian civilization, once the capital of the mighty Aksumite Kingdom. Renowned for its 
-        towering obelisks and ancient palaces.`,
-    },
-  ];
 
   return (
     <section className="flex flex-col bg-[#fff] py-10">

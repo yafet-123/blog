@@ -13,7 +13,7 @@ const Hero = ({
         <div className="w-full h-full lg:h-[15rem] relative mb-5 rounded-2xl overflow-hidden shadow-lg py-5 lg:py-0">
           <Image
             className=""
-            alt="Tour Hero Image 1"
+            alt="Blog Hero Image 1"
             src={HeroImages[0].image.src}
             layout="fill"
             objectFit="cover"
@@ -23,7 +23,7 @@ const Hero = ({
         <div className="w-full h-full lg:h-[15rem] relative mb-5 rounded-2xl overflow-hidden shadow-lg py-5 lg:py-0">
           <Image
             className=""
-            alt="Tour Hero Image 2"
+            alt="Blog Hero Image 2"
             src={HeroImages[1].image.src}
             layout="fill"
             objectFit="cover"
@@ -44,7 +44,7 @@ const Hero = ({
         <div className="hidden lg:flex w-full h-[15rem] relative mb-5 rounded-2xl overflow-hidden shadow-lg py-5">
           <Image
             className=""
-            alt="Tour Hero Image 3"
+            alt="Blog Hero Image 3"
             src={HeroImages[2].image.src}
             layout="fill"
             objectFit="cover"
@@ -53,7 +53,7 @@ const Hero = ({
         <div className="w-full h-[25rem] lg:h-[15rem] relative mb-5 rounded-2xl overflow-hidden shadow-lg py-5">
           <Image
             className=""
-            alt="Tour Hero Image 4"
+            alt="Blog Hero Image 4"
             src={HeroImages[3].image.src}
             layout="fill"
             objectFit="cover"

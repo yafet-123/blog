@@ -9,7 +9,7 @@ import heroImage2 from '../../public/hero/blog/hero (2).jpg';
 import heroImage3 from '../../public/hero/blog/hero (3).jpg';
 import heroImage4 from '../../public/hero/blog/hero (4).jpg';
 
-export default function ToursPage({ posts, topRatedPosts, categories}) {
+export default function BlogsPage({ posts, topRatedPosts, categories}) {
   const HeroImages = [
     {
       id: 1,
