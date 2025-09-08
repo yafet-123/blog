@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com", "hulu12com.wordpress.com"],
+    domains: ["hulu12com.wordpress.com"],
   },
 };
 
