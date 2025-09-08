@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { TextGenerateEffect } from '../shared/TextGenerateEffect';
 
 const Hero = ({
   title,

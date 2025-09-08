@@ -31,12 +31,13 @@ export default function ToursPage({ posts, topRatedPosts, categories}) {
 
   return (
     <div className="antialiased bg-gradient-to-r">
-      <MainHeader title="Eco Travel Ethiopia Tours and Car Rental : Blog" />
+      <MainHeader title="All Blog Posts: Discover Ideas & Tips" />
       <div className="bg-[#dedee0]">
         <Hero
-          title="Your Guide to Responsible Travel in Ethiopia"
-          description={`Discover articles, travel tips, and inspiring stories that help you explore Ethiopia 
-          thoughtfully, sustainably, and authentically.`}
+          title="Latest Insights & Stories"
+          description={`Dive into our collection of articles where ideas, stories, and insights come together. Here you’ll find 
+          the latest updates, thoughtful perspectives, and useful guides across a variety of topics. Whether you’re exploring 
+          for knowledge or just a spark of inspiration, this is where the conversation begins.`}
           style=""
           HeroImages={HeroImages}
         />

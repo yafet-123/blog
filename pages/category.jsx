@@ -31,12 +31,13 @@ export default function Category({ posts, topRatedPosts, categories}) {
 
   return (
     <div className="antialiased bg-gradient-to-r">
-      <MainHeader title="Eco Travel Ethiopia Tours and Car Rental : Blog" />
+      <MainHeader title="Blog Categories: Explore Topics" />
       <div className="bg-[#dedee0]">
         <Hero
-          title="Your Guide to Responsible Travel in Ethiopia"
-          description={`Discover articles, travel tips, and inspiring stories that help you explore Ethiopia 
-          thoughtfully, sustainably, and authentically.`}
+          title="Discover All Blog Categories"
+          description={`Browse through all our blog categories to find articles that inspire, educate, and entertain. 
+          Whether you're looking for travel tips, cultural insights, or lifestyle guides, explore each category 
+          to discover the stories that matter most to you.`}
           style=""
           HeroImages={HeroImages}
         />

@@ -1,19 +1,14 @@
 import { MainHeader } from "../components/common/MainHeader";
-import AboutComponent from "../components/home/AboutComponent";
-import CatalogueSection from "../components/home/CatalogueSection";
-import CompanySection from "../components/home/CompanySection";
-import ContactInformation from "../components/home/ContactInformation";
-import {WhyChooseUs} from "../components/home/whychooseus";
-import Gallery from "../components/home/Gallery";
-import {TestimonialSection} from "../components/home/TestimonialSection";
 import Hero from "../components/home/Hero";
+import Blog from "../components/home/Blog";
+import axios from "axios"
 
-import heroImage1 from '../public/hero/blog/hero (1).jpg';
-import heroImage2 from '../public/hero/blog/hero (2).jpg';
-import heroImage3 from '../public/hero/blog/hero (3).jpg';
-import heroImage4 from '../public/hero/blog/hero (4).jpg';
+import heroImage1 from '../public/hero/home/home (1).jpg';
+import heroImage2 from '../public/hero/home/home (2).jpg';
+import heroImage3 from '../public/hero/home/home (3).jpg';
+import heroImage4 from '../public/hero/home/home (4).jpg';
 
-export default function Home() {
+export default function Home({latestPosts}) {
   const HeroImages = [
     {
       id: 1,
@@ -34,24 +29,78 @@ export default function Home() {
   ];
   return (
     <div className="">
-      <MainHeader title="Import And Export: Home" />
-      <div className="bg-[#dedee0]">
+      <MainHeader title="Explore Our Blog: Stories & Insights" />
+      <div className="bg-[#dedee0] pt">
         <Hero
-          title="Connecting Markets, Empowering Trade"
-          description={`At the heart of global commerce, we specialize in reliable import and export services that move 
-          goods and build partnerships. From sourcing quality products to managing logistics and customs, we simplify 
-          international trade and help businesses thrive across borders. With a commitment to excellence and integrity, 
-          we deliver more than just products — we deliver opportunities.`}
+          title="Discover Stories, Ideas & Insights"
+          description={`Our blog is more than just articles. it’s a collection of stories, experiences, and knowledge meant to 
+          inform, inspire, and connect. From trending topics to timeless lessons, we share insights that encourage growth, 
+          creativity, and discovery. Explore our latest posts and find something new to think about every time you visit.`}
           HeroImages={HeroImages}
           style="lg:flex-row"
         />
-        <AboutComponent />
-        <CatalogueSection />
-        <WhyChooseUs />
-        <Gallery />
-        <TestimonialSection />
-        <ContactInformation />
+        <Blog posts={latestPosts} />
       </div>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  try {
+    const site = "hulu12com.wordpress.com";
+    const apiUrl = `https://public-api.wordpress.com/wp/v2/sites/${site}/posts`;
+    const categoriesUrl = `https://public-api.wordpress.com/wp/v2/sites/${site}/categories`;
+
+    const response = await axios.get(apiUrl);
+
+    const posts = response.data.map(post => {
+      // Extract category slug from class_list
+      const categoryClass = post.class_list.find(cls => cls.startsWith("category-"));
+      const category = categoryClass ? categoryClass.replace("category-", "") : null;
+
+      return {
+        id: post.id,
+        title: post.title.rendered,
+        slug: post.slug,
+        excerpt: post.excerpt.rendered,
+        featured_media: post.jetpack_featured_media_url,
+        link: post.link,
+        date: post.date,
+        category
+      };
+    });
+
+    console.log(posts)
+
+    // latest 6 blogs sorted by date
+    const latestPosts = posts
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 6);
+
+    // top rated by comment_count
+    const topRatedPosts = posts
+      .sort((a, b) => b.comment_count - a.comment_count)
+      .slice(0, 7);
+
+    return {
+      props: {
+        posts,
+        latestPosts,
+        topRatedPosts,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching WordPress posts:", error.message);
+    return {
+      props: {
+        posts: [],
+        latestPosts: [],
+        topRatedPosts: [],
+      },
+    };
+  }
+};
+
+
+
+

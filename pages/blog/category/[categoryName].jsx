@@ -1,13 +1,13 @@
-import Hero from '../../../components/blog/Hero';
+import Hero from '../../../components/blog/BlogHero';
 import { Blogs } from '../../../components/blog/Blogs';
 import { BlogCategories } from '../../../components/blog/BlogCategories';
 import { MainHeader } from '../../../components/shared/MainHeader';
 import axios from 'axios';
 
-import heroImage1 from '../../../public/hero/blog/hero (1).jpg';
-import heroImage2 from '../../../public/hero/blog/hero (2).jpg';
-import heroImage3 from '../../../public/hero/blog/hero (3).jpg';
-import heroImage4 from '../../../public/hero/blog/hero (4).jpg';
+import heroImage1 from '../../../public/hero/blog/hero (5).jpg';
+import heroImage2 from '../../../public/hero/blog/hero (6).jpg';
+import heroImage3 from '../../../public/hero/blog/hero (7).jpg';
+import heroImage4 from '../../../public/hero/blog/hero (8).jpg';
 
 export default function BlogCategory({ blog, categories, topRatedPosts, categoryName }) {
   const HeroImages = [
@@ -19,13 +19,12 @@ export default function BlogCategory({ blog, categories, topRatedPosts, category
   console.log("Props inside BlogCategory:", blog, categories, topRatedPosts, categoryName);
   return (
     <div className="antialiased bg-gradient-to-r">
-      <MainHeader
-        title={`Eco Travel Ethiopia : ${categoryName} Blogs`}
-      />
+      <MainHeader title={`Category: ${categoryName} - Explore Related Posts`} />
       <div className="bg-[#dedee0]">
         <Hero
-          title={`Explore ${categoryName} Blogs`}
-          description={`Discover posts in the ${categoryName} category.`}
+          title={` Latest in ${categoryName}`}
+          description={`Looking for posts about ${categoryName}? You’re in the right place. Here, we’ve gathered all our 
+          articles, guides, and updates related to {Category Name} to help you explore this topic in depth.`}
           HeroImages={HeroImages}
         />
 

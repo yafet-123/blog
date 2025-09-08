@@ -56,9 +56,10 @@ export const Blogs = ({ posts }) => {
                 
                 <h1 className="font-bold text-xl md:text-2xl mb-5 group-hover:text-white" dangerouslySetInnerHTML={{ __html: blog.title }} />
                 
-                <p className="font-normal text-md md:text-xl text-justify mb-5">
-                  {blog.shortDescription}
-                </p>
+                <p 
+                  className="font-normal text-md md:text-xl text-justify mb-5" 
+                  dangerouslySetInnerHTML={{ __html: blog.excerpt }} 
+                />
 
                 <button onClick={() => handleSeeBlog(blog.slug)}>
                   <h5
