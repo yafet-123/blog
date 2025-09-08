@@ -2,11 +2,7 @@ import React from "react";
 import { Footer } from "../shared/Footer";
 import { Navbar } from "../shared/Navbar";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
